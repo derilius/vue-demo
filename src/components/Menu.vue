@@ -2,32 +2,47 @@
 
     <div class="menu">
 
-        <h1>MENU</h1>
+        <div class="d-flex">
+            <img width="150" height="150" alt="Vue logo" src="../assets/logo.png">
+
+            <MenuBookmark v-for="(item,index) in bookmarks" :key="index" :label="item"></MenuBookmark>
+
+        </div>
 
     </div>
 
 </template>
 
 <script lang="ts">
-
     import {Component, Vue} from 'vue-property-decorator';
+    import MenuBookmark from '@/components/MenuBookmark.vue';
 
-    @Component
+    @Component({
+        components: {
+            MenuBookmark,
+        },
+    })
     export default class Menu extends Vue {
 
-    }
+        public bookmarks: string[] = [
+            'Pierwsza zakładka',
+            'Druga zakładka',
+        ];
 
+    }
 </script>
 
 <style scoped>
 
     .menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
         padding: 10px;
-        background-color: white;
-        box-shadow: 10px 0 10px -5px rgba(0,0,0,0.75);
-        min-width: 150px;
-        max-width: 250px;
+        background-color: #0B1B36;
+        min-width: 300px;
         min-height: 100vh;
+        color: #ffffff;
     }
 
 </style>
