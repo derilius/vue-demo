@@ -8,19 +8,19 @@
                 <h1>Please log in</h1>
             </div>
 
-            <form class="login-form">
+            <form class="login-form" @submit.prevent="onLogin">
 
                 <div class="fieldset">
                     <label for="1" class="input--label"><strong>username</strong></label>
-                    <input id="1" type="text">
+                    <input id="1" type="text" v-model=login>
                 </div>
 
                 <div class="fieldset">
                     <label for="2" class="input--label"><strong>password</strong></label>
-                    <input id="2" type="password">
+                    <input id="2" type="password" v-model=password>
                 </div>
 
-                <button>
+                <button type="submit">
                     Let me in
                 </button>
 
@@ -32,10 +32,25 @@
 
 </template>
 
-<script>
-    import {Vue} from 'vue-property-decorator';
+<script lang="ts">
+    import {Component, Vue} from 'vue-property-decorator';
+    import LoginService from "@/login/LoginService";
 
+    @Component
     export default class Login extends Vue {
+
+        private loginService: LoginService = new LoginService();
+        public login: string = "";
+        public password: string = "";
+
+        mounted() {
+            console.log("mounted");
+            this.loginService.get();
+        }
+
+        public onLogin() {
+            this.loginService.post(this.login, this.password);
+        }
 
     }
 

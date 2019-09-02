@@ -3,7 +3,7 @@
     <div class="menu">
 
         <div class="d-flex">
-            <img width="150" height="150" alt="Vue logo" src="../assets/logo.png">
+            <img width="150" height="150" alt="Vue logo" src="../../assets/logo.png">
 
             <MenuBookmark v-for="(item,index) in bookmarks" :key="index" :label="item"></MenuBookmark>
 
@@ -15,7 +15,7 @@
 
 <script lang="ts">
     import {Component, Vue} from 'vue-property-decorator';
-    import MenuBookmark from '@/components/MenuBookmark.vue';
+    import MenuBookmark from '@/about/components/MenuBookmark.vue';
 
     @Component({
         components: {

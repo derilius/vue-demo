@@ -18,19 +18,19 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'vue-property-decorator';
-import Menu from '@/components/Menu.vue';
-import Toolbar from '@/components/Toolbar.vue';
-import TextContent from '@/components/TextContent.vue';
+    import {Component, Vue} from 'vue-property-decorator';
+    import Menu from '@/about/components/Menu.vue';
+    import Toolbar from '@/about/components/Toolbar.vue';
+    import TextContent from '@/about/components/TextContent.vue';
 
-@Component({
-    components: {
-        Menu, Toolbar, TextContent,
-    },
-})
-export default class Home extends Vue {
+    @Component({
+        components: {
+            Menu, Toolbar, TextContent,
+        },
+    })
+    export default class Home extends Vue {
 
-}
+    }
 </script>
 
 <style scoped>
