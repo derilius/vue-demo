@@ -4,19 +4,14 @@ import Login from './login/Login.vue';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [
         {
             path: '/login',
             name: 'login',
-            component: Login,
-            // beforeEnter: (from, to, next) => {
-            //     console.log('from:' + from);
-            //     console.log('to:' + to);
-            //     console.log('next:' + next);
-            // },
+            component: Login
         },
         {
             path: '/about',
@@ -28,3 +23,16 @@ export default new Router({
         },
     ],
 });
+
+router.beforeEach((from, to, next) => {
+    console.log('from:', from);
+    console.log('to:', to);
+    console.log('next:', next);
+    const cos = localStorage.getItem("token");
+
+    console.log(cos);
+
+    next();
+});
+
+export default router;

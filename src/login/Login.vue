@@ -43,11 +43,6 @@
         public login: string = "";
         public password: string = "";
 
-        mounted() {
-            console.log("mounted");
-            this.loginService.get();
-        }
-
         public onLogin() {
             this.loginService.post(this.login, this.password);
         }
