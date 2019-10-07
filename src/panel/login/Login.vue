@@ -34,17 +34,16 @@
 
 <script lang="ts">
     import {Component, Vue} from 'vue-property-decorator';
-    import LoginService from "@/login/LoginService";
+    import LoginService from "@/panel/login/LoginService";
 
     @Component
     export default class Login extends Vue {
 
-        private loginService: LoginService = new LoginService();
         public login: string = "";
         public password: string = "";
 
         public onLogin() {
-            this.loginService.post(this.login, this.password);
+            LoginService.login(this.login, this.password);
         }
 
     }
@@ -57,7 +56,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: url("../assets/photo01.jpg") no-repeat;
+        background: url("../../assets/photo01.jpg") no-repeat;
         background-size: cover;
         min-height: 100vh;
         padding: 10px;

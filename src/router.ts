@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Login from './login/Login.vue';
+import Login from '@/panel/login/Login.vue';
+import About from "@/panel/about/About.vue";
+import StorageService from "@/modules/StorageService";
 
 Vue.use(Router);
 
@@ -11,28 +13,41 @@ const router = new Router({
         {
             path: '/login',
             name: 'login',
-            component: Login
+            component: Login,
+            meta: {
+                title: 'Login',
+                public: true,
+                onlyWhenLoggedOut: true,
+            },
         },
         {
             path: '/about',
             name: 'about',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: () => import(/* webpackChunkName: "about" */ './about/About.vue'),
+            component: About,
+            meta: {
+                title: 'Login',
+                public: false,
+                onlyWhenLoggedOut: false,
+            },
         },
     ],
 });
 
-router.beforeEach((from, to, next) => {
-    console.log('from:', from);
-    console.log('to:', to);
-    console.log('next:', next);
-    const cos = localStorage.getItem("token");
+router.beforeEach((to, from, next) => {
+    const isPublic = to.matched.some(record => record.meta.public);
+    const onlyWhenLoggedOut = to.matched.some(record => record.meta.onlyWhenLoggedOut);
+    const loggedIn = !!StorageService.getTokenData();
 
-    console.log(cos);
-
-    next();
+    if (to.fullPath === '/' && loggedIn) {
+        return next('/about');
+    } else if (to.fullPath === '/' && !loggedIn) {
+        return next('/login');
+    } else if (to.fullPath === '/login' && loggedIn) {
+        return next('/about');
+    } else if (!isPublic && !loggedIn) {
+        return next('/login');
+    }
+    return next();
 });
 
 export default router;

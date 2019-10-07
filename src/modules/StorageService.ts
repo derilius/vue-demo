@@ -1,0 +1,22 @@
+export default class StorageService {
+
+    private static TOKEN_DATA = 'TOKEN_DATA';
+
+    public static setTokenData(data: object) {
+        localStorage.setItem(this.TOKEN_DATA, JSON.stringify(data));
+    }
+
+    public static getTokenData(): object {
+        const tokenData: string | null = localStorage.getItem(this.TOKEN_DATA);
+        return tokenData === null ? null : JSON.parse(tokenData as string);
+    }
+
+    public static getTokenDataByKey(key: string): string {
+        const tokenData: any = this.getTokenData();
+        return tokenData === null ? undefined : tokenData[key];
+    }
+
+    static deleteTokenData() {
+        localStorage.removeItem(this.TOKEN_DATA);
+    }
+}

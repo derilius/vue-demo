@@ -2,7 +2,7 @@
 
     <div class="about">
 
-        <Menu></Menu>
+        <Menu @logout="logout"></Menu>
         <div class="content">
 
             <Toolbar></Toolbar>
@@ -19,9 +19,10 @@
 
 <script lang="ts">
     import {Component, Vue} from 'vue-property-decorator';
-    import Menu from '@/about/components/Menu.vue';
-    import Toolbar from '@/about/components/Toolbar.vue';
-    import TextContent from '@/about/components/TextContent.vue';
+    import Menu from '@/panel/about/components/Menu.vue';
+    import Toolbar from '@/panel/about/components/Toolbar.vue';
+    import TextContent from '@/panel/about/components/TextContent.vue';
+    import LoginService from "@/panel/login/LoginService";
 
     @Component({
         components: {
@@ -30,7 +31,12 @@
     })
     export default class Home extends Vue {
 
+        public logout() {
+            LoginService.logout();
+        }
+
     }
+
 </script>
 
 <style scoped>
