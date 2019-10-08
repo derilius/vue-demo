@@ -22,7 +22,7 @@
     import Menu from '@/panel/about/components/Menu.vue';
     import Toolbar from '@/panel/about/components/Toolbar.vue';
     import TextContent from '@/panel/about/components/TextContent.vue';
-    import LoginService from "@/panel/login/LoginService";
+    import LoginService from "@/panel/auth/LoginService";
 
     @Component({
         components: {

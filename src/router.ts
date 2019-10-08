@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Login from '@/panel/login/Login.vue';
+import AuthPanel from '@/panel/auth/AuthPanel.vue';
 import About from "@/panel/about/About.vue";
 import StorageService from "@/modules/StorageService";
+import Login from "@/panel/auth/components/Login.vue";
+import Register from "@/panel/auth/components/Register.vue";
 
 Vue.use(Router);
 
@@ -11,14 +13,36 @@ const router = new Router({
     base: process.env.BASE_URL,
     routes: [
         {
-            path: '/login',
-            name: 'login',
-            component: Login,
+            path: '/auth',
+            name: 'auth',
+            component: AuthPanel,
             meta: {
-                title: 'Login',
+                title: 'auth',
                 public: true,
                 onlyWhenLoggedOut: true,
             },
+            children: [
+                {
+                    path: 'login',
+                    name: 'login',
+                    component: Login,
+                    meta: {
+                        title: 'login',
+                        public: true,
+                        onlyWhenLoggedOut: true,
+                    },
+                },
+                {
+                    path: 'register',
+                    name: 'register',
+                    component: Register,
+                    meta: {
+                        title: 'register',
+                        public: true,
+                        onlyWhenLoggedOut: true,
+                    },
+                },
+            ]
         },
         {
             path: '/about',
@@ -41,11 +65,11 @@ router.beforeEach((to, from, next) => {
     if (to.fullPath === '/' && loggedIn) {
         return next('/about');
     } else if (to.fullPath === '/' && !loggedIn) {
-        return next('/login');
-    } else if (to.fullPath === '/login' && loggedIn) {
+        return next('/auth/login');
+    } else if (to.fullPath === '/auth/login' && loggedIn) {
         return next('/about');
     } else if (!isPublic && !loggedIn) {
-        return next('/login');
+        return next('/auth/login');
     }
     return next();
 });
