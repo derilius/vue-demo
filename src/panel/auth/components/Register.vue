@@ -1,9 +1,9 @@
 <template>
-    <div class="register-div">
+    <form class="register-div" @submit.prevent="register">
 
-        <h1>Please log in</h1>
+        <h1 class="header">Please register</h1>
 
-        <form @submit.prevent="register">
+        <div class="w-100">
 
             <v-text-field
                     label="First name"
@@ -26,20 +26,19 @@
                     placeholder="Password"
                     v-model="formData.password">
             </v-text-field>
+        </div>
 
-            <div class="d-flex flex-wrap mt-3">
-                <v-btn block color="primary" type="submit">
-                    Create account
-                </v-btn>
+        <div class="button-bottom">
+            <v-btn @click="login">
+                Back
+            </v-btn>
 
-                <v-btn block class="mt-3" @click="login">
-                    Back
-                </v-btn>
-            </div>
+            <v-btn color="primary" type="submit">
+                Create account
+            </v-btn>
+        </div>
 
-        </form>
-
-    </div>
+    </form>
 </template>
 
 <script lang="ts">
@@ -50,10 +49,10 @@
     export default class Login extends Vue {
 
         public formData: object = {
-            firstName: "asf",
-            lastName: "asf",
-            username: "asf",
-            password: "asf",
+            firstName: "",
+            lastName: "",
+            username: "",
+            password: "",
         };
 
         public register() {
@@ -70,7 +69,12 @@
 <style scoped lang="scss">
 
     .register-div {
-        max-width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        min-height: 400px;
+        max-width: 500px;
         padding: 20px;
         background-color: rgba(255, 255, 255, 0.80);
         border-radius: 10px;

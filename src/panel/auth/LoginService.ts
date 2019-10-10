@@ -4,8 +4,7 @@ import StorageService from "@/modules/StorageService";
 
 export default class LoginService {
 
-    public static async login(login: string, password: string) {
-        let api = {username: login, password: password};//TODO: przerobienie na formData
+    public static async login(api: object) {
         ApiService.sendAuth();
         let response = await ApiService.post("/public/login", api);
         StorageService.setTokenData(response);
@@ -23,6 +22,11 @@ export default class LoginService {
     public static async register(formData: object) {
         await ApiService.post("/public/register", formData);
         await router.push("/auth/login");
+    }
+
+    public static async getUserInfo() {
+        console.log(StorageService.getTokenData());
+        return await ApiService.get("/private/user");
     }
 
 }

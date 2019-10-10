@@ -1,32 +1,34 @@
 <template>
-    <div class="login-div">
+    <form class="login-div" @submit.prevent="onLogin">
 
-        <h1>Please log in</h1>
+        <h1 class="header">Please log in</h1>
 
-        <form @submit.prevent="onLogin">
-            <div>
-                <label for="1" class="input--label"><strong>username</strong></label>
-                <input id="1" type="text" v-model=login>
-            </div>
-            <div>
-                <label for="2" class="input--label"><strong>password</strong></label>
-                <input id="2" type="password" v-model=password>
-            </div>
+        <div class="w-100">
+            <v-text-field
+                    label="username"
+                    placeholder="username"
+                    v-model="formData.username">
+            </v-text-field>
+            <v-text-field
+                    label="password"
+                    placeholder="password"
+                    type="password"
+                    v-model="formData.password">
+            </v-text-field>
             <a> Zapomniałeś hasła? </a>
+        </div>
 
-            <div class="d-flex flex-wrap mt-3">
-                <v-btn block color="primary" type="submit">
-                    Let me in!
-                </v-btn>
+        <div class="button-bottom">
+            <v-btn class="col-lg-5" @click="register">
+                Register
+            </v-btn>
 
-                <v-btn block class="mt-3" @click="register">
-                    Register
-                </v-btn>
-            </div>
+            <v-btn class="col-lg-5" color="primary" type="submit">
+                Let me in!
+            </v-btn>
+        </div>
 
-        </form>
-
-    </div>
+    </form>
 </template>
 
 <script lang="ts">
@@ -36,11 +38,13 @@
     @Component
     export default class Login extends Vue {
 
-        public login: string = "";
-        public password: string = "";
+        public formData: object = {
+            username: "",
+            password: "",
+        };
 
         public onLogin() {
-            LoginService.login(this.login, this.password);
+            LoginService.login(this.formData);
         }
 
         public register() {
@@ -53,31 +57,16 @@
 <style scoped lang="scss">
 
     .login-div {
-        max-width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        min-height: 400px;
+        max-width: 500px;
         padding: 20px;
         background-color: rgba(255, 255, 255, 0.80);
         border-radius: 10px;
         box-sizing: border-box;
-    }
-
-    input {
-        padding: 12px 15px;
-        border-radius: 5px;
-        border: 2px solid white;
-        outline: none;
-        width: 100%;
-    }
-
-    input:focus {
-        border-color: #a0a0a0;
-    }
-
-    .input--label {
-        text-transform: uppercase;
-        letter-spacing: .9px;
-        font-size: 12px;
-        color: #6d6d6d;
-        padding-bottom: 10px;
     }
 
 </style>

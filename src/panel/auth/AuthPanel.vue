@@ -1,7 +1,9 @@
 <template>
     <div class="auth h-100">
 
-        <router-view></router-view>
+        <transition mode="out-in" name="fade">
+            <router-view></router-view>
+        </transition>
 
     </div>
 </template>
@@ -16,7 +18,7 @@
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 
     .auth {
         display: flex;
@@ -26,6 +28,18 @@
         background-size: cover;
         min-height: 100vh;
         padding: 10px;
+    }
+
+    .header {
+        width: 100%;
+        align-self: flex-start;
+    }
+
+    .button-bottom {
+        width: 100%;
+        display: flex;
+        align-self: flex-end;
+        justify-content: space-between;
     }
 
 </style>

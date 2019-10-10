@@ -10,7 +10,11 @@
             <div class="data-content">
                 <TextContent></TextContent>
             </div>
-
+            <div>
+                <v-btn @click="getUserInfo"> check user</v-btn>
+                <br>
+                {{userInfo}}
+            </div>
         </div>
 
     </div>
@@ -31,8 +35,14 @@
     })
     export default class Home extends Vue {
 
+        public userInfo: string = "";
+
         public logout() {
             LoginService.logout();
+        }
+
+        public async getUserInfo() {
+            this.userInfo = await LoginService.getUserInfo();
         }
 
     }
