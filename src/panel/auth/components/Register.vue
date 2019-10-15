@@ -44,6 +44,7 @@
 <script lang='ts'>
     import {Component, Vue} from 'vue-property-decorator';
     import LoginService from '@/panel/auth/LoginService';
+    import NotificationService from '@/modules/NotificationService';
 
     @Component
     export default class Register extends Vue {
@@ -55,8 +56,14 @@
             password: '',
         };
 
-        public register() {
-            LoginService.register(this.formData);
+        public async register() {
+            try {
+                await LoginService.register(this.formData);
+                await this.$router.push('/auth/login');
+                NotificationService.success('Registered');
+            } catch (e) {
+                NotificationService.error(e);
+            }
         }
 
         public login() {

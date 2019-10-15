@@ -7,7 +7,7 @@
         </div>
 
         <div class='button-bottom'>
-            <v-btn @click='login'>
+            <v-btn :to="{name: 'login'}">
                 Back
             </v-btn>
         </div>
@@ -18,17 +18,20 @@
 <script lang='ts'>
     import {Component, Vue} from 'vue-property-decorator';
     import LoginService from '@/panel/auth/LoginService';
+    import NotificationService from '@/modules/NotificationService';
 
     @Component
     export default class Activate extends Vue {
 
-        private mounted() {
+        private async mounted() {
             const token = this.$route.params.token;
-            LoginService.activate(token);
-        }
-
-        public login() {
-            this.$router.push('/auth/login');
+            try {
+                await LoginService.activate(token);
+                await this.$router.push('/auth/login');
+                NotificationService.success('Activated');
+            } catch (e) {
+                NotificationService.error(e);
+            }
         }
 
     }

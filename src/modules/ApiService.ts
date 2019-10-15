@@ -1,4 +1,4 @@
-import instance from '@/modules/Axios';
+import instance from '@/plugins/Axios';
 import StorageService from '@/modules/StorageService';
 import router from '@/router';
 
@@ -11,7 +11,7 @@ export default class ApiService {
     public static handleUnauthorized() {
         ApiService.sendAuth();
         StorageService.deleteTokenData();
-        router.push('/auth/login');
+        router.push('/auth/login'); // TODO:przenieść gdzieś?
     }
 
     public static setToken(accessToken: string): void {
@@ -23,23 +23,13 @@ export default class ApiService {
     }
 
     public static async post(url: string, param?: object) {
-        try {
-            const response = await this.HTTP.post(url, param);
-            return response.data;
-        } catch (e) {
-            console.error(e);
-            throw e;
-        }
+        const response = await this.HTTP.post(url, param);
+        return response.data;
     }
 
     public static async get(url: string) {
-        try {
-            const response = await this.HTTP.get(url);
-            return response.data;
-        } catch (e) {
-            console.error(e);
-            throw e;
-        }
+        const response = await this.HTTP.get(url);
+        return response.data;
     }
 
 }

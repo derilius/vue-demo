@@ -19,29 +19,28 @@ export default class LoginService {
         await router.push('/auth/login');
     }
 
-    public static async register(formData: object) {
-        await ApiService.post('/public/register', formData);
-        await router.push('/auth/login');
+    public static register(formData: object) {
+       return  ApiService.post('/public/register', formData);
     }
 
-    public static async getUserInfo() {
-        return await ApiService.get('/private/user');
+    public static getUserInfo() {
+        return ApiService.get('/private/user');
     }
 
-    public static async getAdminInfo() {
-        return await ApiService.get('/private/admin');
+    public static getAdminInfo() {
+        return ApiService.get('/private/admin');
     }
 
-    public static async activate(token: string) {
-        return await ApiService.post(`/public/activate/${token}`);
+    public static activate(token: string) {
+        return ApiService.post(`/public/activate/${token}`);
     }
 
-    public static async remindPassword(mail: string) {
-        return await ApiService.post(`/public/remind-password/${mail}`);
+    public static remindPassword(mail: string) {
+        return ApiService.post(`/public/remind-password/${mail}`);
     }
 
-    public static async resetPassword(formData: object, token: string) {
-        return await ApiService.post(`/public/reset-password/${token}`, formData);
+    public static resetPassword(formData: object, token: string) {
+        return ApiService.post(`/public/reset-password/${token}`, formData);
     }
 
 }

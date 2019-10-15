@@ -15,12 +15,11 @@
                     type='password'
                     v-model='formData.password'>
             </v-text-field>
-            <router-link :to='{name: ' remind-password
-            '}'> Zapomniałeś hasła?</router-link>
+            <router-link :to="{name: 'remind-password'}"> Zapomniałeś hasła?</router-link>
         </div>
 
         <div class='button-bottom'>
-            <v-btn @click='register'>
+            <v-btn :to="{name: 'register'}">
                 Register
             </v-btn>
 
@@ -35,6 +34,7 @@
 <script lang='ts'>
     import {Component, Vue} from 'vue-property-decorator';
     import LoginService from '@/panel/auth/LoginService';
+    import NotificationService from '@/modules/NotificationService';
 
     @Component
     export default class Login extends Vue {
@@ -44,12 +44,13 @@
             password: '',
         };
 
-        public onLogin() {
-            LoginService.login(this.formData);
-        }
-
-        public register() {
-            this.$router.push('/auth/register');
+        public async onLogin() {
+            try {
+                await LoginService.login(this.formData);
+                await this.$router.push('/auth/login');
+            } catch (e) {
+                NotificationService.error(e);
+            }
         }
 
     }

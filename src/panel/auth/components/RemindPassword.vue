@@ -12,7 +12,7 @@
         </div>
 
         <div class='button-bottom'>
-            <v-btn @click='login'>
+            <v-btn :to="{name: 'login'}">
                 Back
             </v-btn>
 
@@ -27,6 +27,7 @@
 <script lang='ts'>
     import {Component, Vue} from 'vue-property-decorator';
     import LoginService from '@/panel/auth/LoginService';
+    import NotificationService from '@/modules/NotificationService';
 
     @Component
     export default class RemindPassword extends Vue {
@@ -35,12 +36,14 @@
             mail: '',
         };
 
-        public onRemind() {
-            LoginService.remindPassword(this.formData.mail);
-        }
-
-        public login() {
-            this.$router.push('/auth/login');
+        public async onRemind() {
+            try {
+                await LoginService.remindPassword(this.formData.mail);
+                await this.$router.push('/auth/login');
+                NotificationService.success('Success');
+            } catch (e) {
+                NotificationService.error(e);
+            }
         }
 
     }
