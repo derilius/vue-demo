@@ -1,14 +1,14 @@
 import axios from 'axios';
-import ApiService from "@/modules/ApiService";
+import ApiService from '@/modules/ApiService';
 
 const instance = axios.create({
     baseURL: 'http://localhost:9090',
     timeout: 10000,
     headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "http://localhost:8080",
-    }
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:8080',
+    },
 });
 
 instance.interceptors.response.use(

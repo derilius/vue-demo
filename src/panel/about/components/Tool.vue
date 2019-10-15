@@ -1,10 +1,10 @@
 <template>
 
-    <div class="tool">Tool one</div>
+    <div class='tool'>Tool one</div>
 
 </template>
 
-<script lang="ts">
+<script lang='ts'>
     import {Component, Prop, Vue} from 'vue-property-decorator';
 
     @Component

@@ -1,6 +1,6 @@
-import instance from "@/modules/Axios";
-import StorageService from "@/modules/StorageService";
-import router from "@/router";
+import instance from '@/modules/Axios';
+import StorageService from '@/modules/StorageService';
+import router from '@/router';
 
 export default class ApiService {
 
@@ -8,7 +8,7 @@ export default class ApiService {
     private static readonly AUTH_PREFIX = 'Bearer ';
     private static HTTP = instance;
 
-    static handleUnauthorized() {
+    public static handleUnauthorized() {
         ApiService.sendAuth();
         StorageService.deleteTokenData();
         router.push('/auth/login');
@@ -22,7 +22,7 @@ export default class ApiService {
         this.HTTP.defaults.headers.common.Authorization = this.AUTH_AUTHORIZATION;
     }
 
-    public static async post(url: string, param: object) {
+    public static async post(url: string, param?: object) {
         try {
             const response = await this.HTTP.post(url, param);
             return response.data;

@@ -1,12 +1,12 @@
 <template>
 
-    <div class="toolbar">
-        <Tool v-for="(tool,index) in tools" :key="index" :label="tool"></Tool>
+    <div class='toolbar'>
+        <Tool v-for='(tool,index) in tools' :key='index' :label='tool'></Tool>
     </div>
 
 </template>
 
-<script lang="ts">
+<script lang='ts'>
     import {Component, Vue} from 'vue-property-decorator';
     import Tool from './Tool.vue';
 

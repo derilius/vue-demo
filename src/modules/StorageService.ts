@@ -16,7 +16,8 @@ export default class StorageService {
         return tokenData === null ? undefined : tokenData[key];
     }
 
-    static deleteTokenData() {
+    public static deleteTokenData() {
         localStorage.removeItem(this.TOKEN_DATA);
     }
+
 }

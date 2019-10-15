@@ -1,12 +1,12 @@
 <template>
 
-    <div class="menu-bookmark">
+    <div class='menu-bookmark'>
         {{label}}
     </div>
 
 </template>
 
-<script lang="ts">
+<script lang='ts'>
     import {Component, Prop, Vue} from 'vue-property-decorator';
 
     @Component

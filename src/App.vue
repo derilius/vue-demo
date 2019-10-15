@@ -1,10 +1,12 @@
 <template>
-    <div id="app">
-        <v-app><router-view/></v-app>
+    <div id='app'>
+        <v-app>
+            <router-view/>
+        </v-app>
     </div>
 </template>
 
-<script lang="ts">
+<script lang='ts'>
     import {Component, Vue} from 'vue-property-decorator';
 
     @Component
@@ -12,7 +14,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang='scss'>
 
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;

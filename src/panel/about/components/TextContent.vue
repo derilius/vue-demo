@@ -1,6 +1,6 @@
 <template>
 
-    <div class="data-content-text">
+    <div class='data-content-text'>
         <p>
             Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemyśle poligraficznym.
             Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem
@@ -14,13 +14,13 @@
 
 </template>
 
-<script lang="ts">
-import {Component, Vue} from 'vue-property-decorator';
+<script lang='ts'>
+    import {Component, Vue} from 'vue-property-decorator';
 
-@Component
-export default class TextContent extends Vue {
+    @Component
+    export default class TextContent extends Vue {
 
-}
+    }
 </script>
 
 <style scoped>

@@ -1,19 +1,25 @@
 <template>
 
-    <div class="about">
+    <div class='about'>
 
-        <Menu @logout="logout"></Menu>
-        <div class="content">
+        <Menu @logout='logout'></Menu>
+        <div class='content'>
 
             <Toolbar></Toolbar>
 
-            <div class="data-content">
+            <div class='data-content'>
                 <TextContent></TextContent>
             </div>
             <div>
-                <v-btn @click="getUserInfo"> check user</v-btn>
+                <v-btn @click='getUserInfo'> check user</v-btn>
                 <br>
                 {{userInfo}}
+            </div>
+
+            <div>
+                <v-btn @click='getAdminInfo'> check admin</v-btn>
+                <br>
+                {{adminInfo}}
             </div>
         </div>
 
@@ -21,12 +27,12 @@
 
 </template>
 
-<script lang="ts">
+<script lang='ts'>
     import {Component, Vue} from 'vue-property-decorator';
     import Menu from '@/panel/about/components/Menu.vue';
     import Toolbar from '@/panel/about/components/Toolbar.vue';
     import TextContent from '@/panel/about/components/TextContent.vue';
-    import LoginService from "@/panel/auth/LoginService";
+    import LoginService from '@/panel/auth/LoginService';
 
     @Component({
         components: {
@@ -35,7 +41,8 @@
     })
     export default class Home extends Vue {
 
-        public userInfo: string = "";
+        public userInfo: string = '';
+        public adminInfo: string = '';
 
         public logout() {
             LoginService.logout();
@@ -43,6 +50,10 @@
 
         public async getUserInfo() {
             this.userInfo = await LoginService.getUserInfo();
+        }
+
+        public async getAdminInfo() {
+            this.adminInfo = await LoginService.getAdminInfo();
         }
 
     }
