@@ -35,6 +35,7 @@
     import {Component, Vue} from 'vue-property-decorator';
     import LoginService from '@/panel/auth/LoginService';
     import NotificationService from '@/modules/NotificationService';
+    import StorageService from "@/modules/StorageService";
 
     @Component
     export default class Login extends Vue {
@@ -47,6 +48,10 @@
         public async onLogin() {
             try {
                 await LoginService.login(this.formData);
+                const user = await LoginService.getUserInfo();
+                StorageService.setUserData(user);
+                console.log(user);
+                await this.$store.dispatch('setUserData', user);
                 await this.$router.push('/auth/login');
             } catch (e) {
                 NotificationService.error(e);

@@ -20,15 +20,11 @@ export default class LoginService {
     }
 
     public static register(formData: object) {
-       return  ApiService.post('/public/register', formData);
+        return ApiService.post('/public/register', formData);
     }
 
     public static getUserInfo() {
-        return ApiService.get('/private/user');
-    }
-
-    public static getAdminInfo() {
-        return ApiService.get('/private/admin');
+        return ApiService.get('/user');
     }
 
     public static activate(token: string) {

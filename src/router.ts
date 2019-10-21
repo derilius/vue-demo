@@ -1,9 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import About from '@/panel/about/About.vue';
 import StorageService from '@/modules/StorageService';
-import Login from '@/panel/auth/components/Login.vue';
 import AuthRouter from '@/panel/auth/AuthRouter';
+import LayoutRouter from "@/panel/_layout/LayoutRouter";
 
 Vue.use(Router);
 
@@ -12,16 +11,7 @@ const router = new Router({
     base: process.env.BASE_URL,
     routes: [
         ...AuthRouter,
-        {
-            path: '/about',
-            name: 'about',
-            component: About,
-            meta: {
-                title: 'Login',
-                public: false,
-                onlyWhenLoggedOut: false,
-            },
-        },
+        ...LayoutRouter,
     ],
 });
 

@@ -45,7 +45,8 @@
 
     .header {
         width: 100%;
-        align-self: flex-start;
+        display: flex;
+        justify-content: center;
     }
 
     .button-bottom {

@@ -1,6 +1,14 @@
 @import 'transition';
 @import 'notifications';
 
+html {
+  overflow-y: auto !important;
+}
+
+p {
+  text-align: justify;
+}
+
 .w-100 {
   width: 100% !important;
 }
