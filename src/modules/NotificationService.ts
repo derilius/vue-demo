@@ -11,7 +11,7 @@ export default class NotificationService {
     }
 
     public static error(error?: any): void {
-        const unwrappedError = error.response.data.message;
+        const unwrappedError = error.message;
         const isArray = Array.isArray(unwrappedError);
         const msg = isArray && unwrappedError.length > 0 ? unwrappedError[0] : unwrappedError;
         Vue.prototype.$awn.alert(msg, {labels: {alert: 'Błąd'}});

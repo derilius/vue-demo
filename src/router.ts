@@ -21,11 +21,11 @@ router.beforeEach((to, from, next) => {
     const loggedIn = !!StorageService.getTokenData();
 
     if (to.fullPath === '/' && loggedIn) {
-        return next('/about');
+        return next('/panel/home');
     } else if (to.fullPath === '/' && !loggedIn) {
         return next('/auth/login');
     } else if (to.fullPath === '/auth/login' && loggedIn) {
-        return next('/about');
+        return next('/panel/home');
     } else if (!isPublic && !loggedIn) {
         return next('/auth/login');
     }
