@@ -1,7 +1,7 @@
 <template>
     <div class='menu'>
 
-        <div class="d-flex justify-center align-center" style="height:64px;border: white solid 1px">
+        <div class="d-flex justify-center align-center" style="height:65px;border: white solid 1px">
         </div>
 
         <div class="d-flex flex-wrap">
@@ -12,6 +12,10 @@
             <router-link :to="{name: 'vehicle'}" class="w-100 menu-link-label menu-link"><label>
                 <i class="fas fa-car"></i>&nbsp;
                 <span> Pojazdy </span>
+            </label></router-link>
+            <router-link :to="{name: 'history'}" class="w-100 menu-link-label menu-link"><label>
+                <i class="fas fa-car"></i>&nbsp;
+                <span> Historia </span>
             </label></router-link>
         </div>
 

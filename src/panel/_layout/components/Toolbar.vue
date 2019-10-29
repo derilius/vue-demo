@@ -1,7 +1,6 @@
 <template>
-
     <div>
-        <v-toolbar>
+        <v-toolbar style="height: 65px!important;">
             <i class="fas fa-bars fa-2x"></i>
 
             <v-spacer></v-spacer>
@@ -24,7 +23,8 @@
                             <v-list-item>
                                 <v-list-item-content>
                                     <v-list-item-title>{{title}}</v-list-item-title>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris faucibus porttitor accumsan. Cras non tellus.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris faucibus porttitor
+                                    accumsan. Cras non tellus.
                                 </v-list-item-content>
                             </v-list-item>
                             <v-divider></v-divider>
@@ -35,7 +35,8 @@
                 <v-menu offset-y bottom left>
                     <template v-slot:activator="{ on }">
                         <v-btn v-on="on" text>
-                            imie nazwisko <i class="fas fa-sort-down fa-2x" style="padding-bottom: 10px; padding-left: 3px"></i>
+                            imie nazwisko <i class="fas fa-sort-down fa-2x"
+                                             style="padding-bottom: 10px; padding-left: 3px"></i>
                         </v-btn>
                     </template>
 
@@ -47,14 +48,14 @@
                         >
                             <v-list-item-title>{{ option }}</v-list-item-title>
                         </v-list-item>
-                        <v-list-item @click='onLogout'><i class="fas fa-sign-out-alt"></i> &nbsp; Let me out</v-list-item>
+                        <v-list-item @click='onLogout'><i class="fas fa-sign-out-alt"></i> &nbsp; Let me out
+                        </v-list-item>
                     </v-list>
                 </v-menu>
             </v-toolbar-items>
 
         </v-toolbar>
     </div>
-
 </template>
 
 <script lang='ts'>

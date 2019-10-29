@@ -52,7 +52,7 @@
                 StorageService.setUserData(user);
                 console.log(user);
                 await this.$store.dispatch('setUserData', user);
-                await this.$router.push('/auth/login');
+                await this.$router.push('/panel/home');
             } catch (e) {
                 NotificationService.error(e);
             }

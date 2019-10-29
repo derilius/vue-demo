@@ -1,13 +1,12 @@
 <template>
-    <div class='about'>
+    <div class='about w-100'>
 
         <Menu></Menu>
         <div class='content w-100'>
             <Toolbar @logout='logout'></Toolbar>
 
-            <div class='data-content'>
+            <div class='data-content w-100'>
 
-                <!--                <TextContent :text="{aa: 1}"></TextContent>-->
                 <router-view></router-view>
             </div>
         </div>
@@ -53,7 +52,6 @@
 
     .content {
         margin-left: 220px;
-        height: 100vh;
         background-color: rgb(238, 238, 238);
     }
 

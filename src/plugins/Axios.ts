@@ -2,7 +2,7 @@ import axios from 'axios';
 import ApiService from '@/modules/ApiService';
 
 const instance = axios.create({
-    baseURL: 'http://192.168.2.91:9090',
+    baseURL: 'http://localhost:9090',
     timeout: 10000,
     headers: {
         'Accept': 'application/json',
@@ -14,7 +14,8 @@ const instance = axios.create({
 instance.interceptors.response.use(
     (response) => {
         return response;
-    }, (error) => {
+    },
+    (error) => {
         if (error.request.status === 401 || error.request.status === 0) {
             ApiService.handleUnauthorized();
         }

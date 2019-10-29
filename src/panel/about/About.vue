@@ -114,15 +114,6 @@
         padding: 5px;
     }
 
-    .content-div {
-        display: flex;
-        flex-direction: column;
-        background-color: white;
-        flex-wrap: wrap;
-        border: 5px solid rgb(238, 238, 238);
-        border-radius: 20px;
-    }
-
     .content-div-form {
         display: flex;
         flex-wrap: wrap;

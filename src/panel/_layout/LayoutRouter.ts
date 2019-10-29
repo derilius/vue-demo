@@ -2,6 +2,7 @@ import Layout from "@/panel/_layout/Layout.vue";
 import Vehicle from "@/panel/vehicle/Vehicle.vue";
 import Home from "@/panel/home/Home.vue";
 import About from "@/panel/about/About.vue";
+import History from "@/panel/history/History.vue";
 
 export default [
     {
@@ -30,6 +31,16 @@ export default [
                 component: Home,
                 meta: {
                     title: 'home',
+                    public: false,
+                    onlyWhenLoggedOut: false,
+                },
+            },
+            {
+                path: 'history',
+                name: 'history',
+                component: History,
+                meta: {
+                    title: 'history',
                     public: false,
                     onlyWhenLoggedOut: false,
                 },
