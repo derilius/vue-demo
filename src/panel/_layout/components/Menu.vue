@@ -2,7 +2,6 @@
     <div class='menu'>
 
         <div class="d-flex justify-center align-center" style="height:64px;border: white solid 1px">
-            <img src="../../../assets/logo.png" alt="CEBULA XD" style="max-width: 100%; max-height: 100%">
         </div>
 
         <div class="d-flex flex-wrap">
