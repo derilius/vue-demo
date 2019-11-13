@@ -5,18 +5,18 @@
         </div>
 
         <div class="d-flex flex-wrap">
-            <router-link :to="{name: 'home'}" class="w-100 menu-link-label menu-link"><label>
+            <router-link :to="{name: 'home'}" class="w-100 menu-link-label menu-link">
                 <i class="fas fa-home"></i>&nbsp;
                 <span> Strona główna</span>
-            </label></router-link>
-            <router-link :to="{name: 'vehicle'}" class="w-100 menu-link-label menu-link"><label>
+            </router-link>
+            <router-link :to="{name: 'vehicle'}" class="w-100 menu-link-label menu-link">
                 <i class="fas fa-car"></i>&nbsp;
                 <span> Pojazdy </span>
-            </label></router-link>
-            <router-link :to="{name: 'history'}" class="w-100 menu-link-label menu-link"><label>
-                <i class="fas fa-car"></i>&nbsp;
+            </router-link>
+            <router-link :to="{name: 'history'}" class="w-100 menu-link-label menu-link">
+                <i class="fas fa-calendar-alt"></i>&nbsp;
                 <span> Historia </span>
-            </label></router-link>
+            </router-link>
         </div>
 
     </div>

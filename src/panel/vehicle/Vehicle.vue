@@ -1,46 +1,62 @@
 <template>
     <div class="w-100 h-100 d-flex flex-wrap">
 
-        <div class="content-div col-lg-4">
-            <div class="d-flex col-lg-9" style="margin:0!important;padding:0!important;">
-                <v-text-field
-                        placeholder='Szukaj'
-                        v-model='search'>
-                </v-text-field>
-            </div>
-            <div class="d-flex col-lg-3">
-                <v-btn color='primary'>
-                    Dodaj
-                </v-btn>
-            </div>
-            <v-data-table class="elevation-1 w-100"
-                          :headers="headers"
-                          :items="vehicles"
-                          :items-per-page="10"
-            ></v-data-table>
+        <div class="col-lg-4">
+            <Table
+                    :enable_header="true"
+                    :headers="headers"
+                    :values="vehicles"
+            ></Table>
         </div>
 
         <div class="content-div col-lg-8">
-            <form class="d-flex w-100">
+            <div class="w-100 d-flex flex-wrap">
+                <label class="w-100" style="text-align: right;font-size: 20px;padding: 5px 10px 5px 10px">
+                    Audi A3 RLA 3021
+                </label>
+                <v-divider class="w-100 mx-4"
+                           style="padding-bottom: 15px"
+                ></v-divider>
+            </div>
+            <div class="d-flex flex-wrap w-100">
                 <v-text-field class="form-input col-lg-4"
-                        label='Marka'
-                        placeholder='Marka'
-                        type='text'
-                        v-model='selected.marka'>
+                              label='Rok prod'
+                              placeholder='Rok prod'
+                              type='text'
+                              v-model='selected.year'>
+                </v-text-field>
+                <v-text-field class="form-input col-lg-8"
+                              label='VIN'
+                              placeholder='VIN'
+                              type='text'
+                              v-model='selected.vin'>
                 </v-text-field>
                 <v-text-field class="form-input col-lg-4"
-                        label='Model'
-                        placeholder='model'
-                        type='text'
-                        v-model='selected.model'>
+                              label='Ozn. silnika'
+                              placeholder='Ozn. silnika'
+                              type='text'
+                              v-model='selected.engine'>
                 </v-text-field>
                 <v-text-field class="form-input col-lg-4"
-                        label='rok prod'
-                        placeholder='rok produkcji'
-                        type='number'
-                        v-model='selected.year'>
+                              label='Pojemność'
+                              placeholder='Pojemność'
+                              type='number'
+                              v-model='selected.capacity'>
                 </v-text-field>
-            </form>
+                <v-text-field class="form-input col-lg-4"
+                              label='Paliwo'
+                              placeholder='Paliwo'
+                              type='text'
+                              v-model='selected.fuel'>
+                </v-text-field>
+            </div>
+            <div class="w-100 d-flex">
+                <Table class="w-100"
+                       :enable_header="false"
+                       :headers="headers2"
+                       :values="history"
+                ></Table>
+            </div>
         </div>
 
     </div>
@@ -48,8 +64,11 @@
 
 <script lang='ts'>
     import {Component, Vue} from 'vue-property-decorator';
+    import Table from "@/panel/vehicle/Table.vue";
 
-    @Component({})
+    @Component({
+        components: {Table}
+    })
     export default class Vehicle extends Vue {
 
         public search = '';
@@ -76,6 +95,28 @@
                 nr: "RLA 3021",
             },
         ];
+        public headers2 = [
+            {text: 'Data', value: 'date', align: 'left',},
+            {text: 'Osoba', value: 'worker',},
+            {text: 'Koszt', value: 'cost', align: 'right'},
+        ];
+        public history = [
+            {
+                date: new Date(),
+                worker: "Jan Kowalski",
+                cost: 1200,
+            },
+            {
+                date: new Date(),
+                worker: "Adam Nowak",
+                cost: 300,
+            },
+            {
+                date: new Date(),
+                worker: "Jan Kowalski",
+                cost: 750,
+            },
+        ];
 
     }
 
@@ -83,7 +124,7 @@
 
 <style scoped lang="scss">
 
-    .form-input{
+    .form-input {
         padding: 10px;
     }
 
