@@ -50,6 +50,10 @@
                               v-model='selected.fuel'>
                 </v-text-field>
             </div>
+            <div class="w-100 d-flex flex-wrap">
+                <h2>Historia</h2>
+                <div style="width: 100%;min-height: 1px;max-height: 1px; background-color: lightgray; margin-bottom: 1rem;margin-top: 0.5rem"></div>
+            </div>
             <div class="w-100 d-flex">
                 <Table class="w-100"
                        :enable_header="false"
@@ -102,17 +106,17 @@
         ];
         public history = [
             {
-                date: new Date(),
+                date: new Date().toDateString(),
                 worker: "Jan Kowalski",
                 cost: 1200,
             },
             {
-                date: new Date(),
+                date: new Date().toDateString(),
                 worker: "Adam Nowak",
                 cost: 300,
             },
             {
-                date: new Date(),
+                date: new Date().toDateString(),
                 worker: "Jan Kowalski",
                 cost: 750,
             },

@@ -18,17 +18,17 @@
             </div>
             <div class="d-flex col-lg-2">
                 <v-text-field
-                        label="szukaj"
-                        placeholder='Szukaj'
+                        label="Szukaj"
+                        placeholder='Wprowadź wartość...'
                         v-model='search'>
                 </v-text-field>
             </div>
-            <div class="d-flex col-lg-2">
-                <v-btn color='primary'>
-                    SEARCH
+            <div class="d-flex justify-center align-center col-lg-2 mb-3">
+                <v-btn class="mr-3" color='primary'>
+                    SZUKAJ
                 </v-btn>
                 <v-btn>
-                    FILTER
+                    FILTRY
                 </v-btn>
             </div>
         </div>

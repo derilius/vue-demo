@@ -1,17 +1,17 @@
 <template>
     <form class='login-div' @submit.prevent='onLogin'>
 
-        <h1 class='header'>Please log in</h1>
+        <h1 class='header'>Logowanie</h1>
 
         <div class='w-100'>
             <v-text-field
-                    label='mail'
-                    placeholder='mail'
+                    label='Email'
+                    placeholder='Email'
                     v-model='formData.username'>
             </v-text-field>
             <v-text-field
-                    label='password'
-                    placeholder='password'
+                    label='Hasło'
+                    placeholder='Hasło'
                     type='password'
                     v-model='formData.password'>
             </v-text-field>
@@ -20,11 +20,11 @@
 
         <div class='button-bottom'>
             <v-btn :to="{name: 'register'}">
-                Register
+                Zarejestruj
             </v-btn>
 
             <v-btn color='primary' type='submit'>
-                Let me in!
+                Zaloguj
             </v-btn>
         </div>
 

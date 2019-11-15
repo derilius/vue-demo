@@ -1,40 +1,40 @@
 <template>
     <form class='login-div' @submit.prevent='register'>
 
-        <h1 class='header'>Please register</h1>
+        <h1 class='header'>Rejestracja</h1>
 
         <div class='w-100'>
 
             <v-text-field
-                    label='First name'
-                    placeholder='First name'
+                    label='Imię'
+                    placeholder='Imię'
                     v-model='formData.firstName'>
             </v-text-field>
             <v-text-field
-                    label='Last name'
-                    placeholder='Last name'
+                    label='Nazwisko'
+                    placeholder='Nazwisko'
                     v-model='formData.lastName'>
             </v-text-field>
             <v-text-field
-                    label='Mail'
-                    placeholder='Mail'
+                    label='Email'
+                    placeholder='Email'
                     v-model='formData.mail'>
             </v-text-field>
             <v-text-field
                     type='password'
-                    label='Password'
-                    placeholder='Password'
+                    label='Hasło'
+                    placeholder='Hasło'
                     v-model='formData.password'>
             </v-text-field>
         </div>
 
         <div class='button-bottom'>
             <v-btn @click='login'>
-                Back
+                Wróć
             </v-btn>
 
             <v-btn color='primary' type='submit'>
-                Create account
+                Załóż konto
             </v-btn>
         </div>
 

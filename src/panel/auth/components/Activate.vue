@@ -1,7 +1,7 @@
 <template>
     <form class='login-div'>
 
-        <h1 class='header'>Please activate</h1>
+        <h1 class='header'>Aktywacja konta</h1>
 
         <div class='w-100'>
         </div>

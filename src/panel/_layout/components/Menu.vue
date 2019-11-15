@@ -1,7 +1,8 @@
 <template>
     <div class='menu'>
 
-        <div class="d-flex justify-center align-center" style="height:65px;border: white solid 1px">
+        <div class="d-flex justify-center align-center" style="height:65px;border:solid 1px white">
+            <strong style="letter-spacing: 3px;font-size: 25px">LOGO</strong>
         </div>
 
         <div class="d-flex flex-wrap">
@@ -34,7 +35,7 @@
 <style scoped>
 
     .menu {
-        background-color: #0B1B36;
+        background-color: #0B3B5A;
         max-width: 220px;
         min-height: 100vh;
         color: #ffffff;
