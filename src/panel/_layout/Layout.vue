@@ -29,10 +29,6 @@
     })
     export default class Layout extends Vue {
 
-        get userInfo(): { id: number } {
-            return this.$store.getters.getUserData;
-        }
-
         public logout() {
             LoginService.logout();
         }

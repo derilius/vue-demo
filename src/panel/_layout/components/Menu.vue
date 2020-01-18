@@ -10,10 +10,6 @@
                 <i class="fas fa-home"></i>&nbsp;
                 <span> Strona główna</span>
             </router-link>
-            <router-link :to="{name: 'vehicle'}" class="w-100 menu-link-label menu-link">
-                <i class="fas fa-car"></i>&nbsp;
-                <span> Pojazdy </span>
-            </router-link>
             <router-link :to="{name: 'history'}" class="w-100 menu-link-label menu-link">
                 <i class="fas fa-calendar-alt"></i>&nbsp;
                 <span> Historia </span>

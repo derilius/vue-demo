@@ -18,7 +18,6 @@
             <v-text-field
                     label='Email'
                     placeholder='Email'
-                    :rules="[rules.email]"
                     v-model='formData.mail'>
             </v-text-field>
             <v-text-field
@@ -43,42 +42,33 @@
 </template>
 
 <script lang='ts'>
-    import {Component, Vue} from 'vue-property-decorator';
-    import LoginService from '@/panel/auth/LoginService';
-    import NotificationService from '@/modules/NotificationService';
+import {Component, Vue} from 'vue-property-decorator';
+import LoginService from '@/panel/auth/LoginService';
+import NotificationService from '@/modules/NotificationService';
 
-    @Component
-    export default class Register extends Vue {
+@Component
+export default class Register extends Vue {
 
-        public formData: object = {
-            firstName: '',
-            lastName: '',
-            mail: '',
-            password: '',
-        };
-        public rules = {
-            email: value => {
-                console.log(value)
-                console.log(value.toString().includes('@'))
-               return value.includes('@') || "Email nie poprawny"
-            }
+    public formData: object = {
+        firstName: '',
+        lastName: '',
+        mail: '',
+        password: '',
+    };
+
+    public async register() {
+        try {
+            await LoginService.register(this.formData);
+            await this.$router.push('/auth/login');
+            NotificationService.success('Zarejestrowano!');
+        } catch (e) {
+            NotificationService.error(e);
         }
-
-        public async register() {
-            try {
-                await LoginService.register(this.formData);
-                await this.$router.push('/auth/login');
-                NotificationService.success('Zarejestrowano!');
-            } catch (e) {
-                NotificationService.error(e);
-            }
-        }
-
-        public
-
-        login() {
-            this.$router.push('/auth/login');
-        }
-
     }
+
+    public login() {
+        this.$router.push('/auth/login');
+    }
+
+}
 </script>

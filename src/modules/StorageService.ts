@@ -21,8 +21,8 @@ export default class StorageService {
         localStorage.removeItem(this.TOKEN_DATA);
     }
 
-    static setUserData(user: object) {
-        localStorage.setItem(this.USER_DATA, JSON.stringify(user))
+    public static setUserData(user: object) {
+        localStorage.setItem(this.USER_DATA, JSON.stringify(user));
     }
 
 }

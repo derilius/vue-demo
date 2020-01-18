@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import StorageService from '@/modules/StorageService';
 import AuthRouter from '@/panel/auth/AuthRouter';
-import LayoutRouter from "@/panel/_layout/LayoutRouter";
+import LayoutRouter from '@/panel/_layout/LayoutRouter';
 
 Vue.use(Router);
 

@@ -5,8 +5,8 @@ import store from './store';
 import vuetify from './plugins/Vuetify';
 import '@/styles/style.scss';
 import '@/plugins/Notification';
-import StorageService from "@/modules/StorageService";
-import ApiService from "@/modules/ApiService";
+import StorageService from '@/modules/StorageService';
+import ApiService from '@/modules/ApiService';
 
 Vue.config.productionTip = false;
 

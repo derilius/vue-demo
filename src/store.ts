@@ -14,10 +14,10 @@ export default new Vuex.Store({
     },
     actions: {
         async setUserData(context, data) {
-            await context.commit('saveUserData', data)
+            await context.commit('saveUserData', data);
         },
     },
     getters: {
-        getUserData: state => state.userData,
-    }
+        getUserData: (state) => state.userData,
+    },
 });

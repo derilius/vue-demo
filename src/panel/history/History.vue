@@ -44,22 +44,21 @@
 </template>
 
 <script lang='ts'>
-    import {Component, Vue} from 'vue-property-decorator';
+import {Component, Vue} from 'vue-property-decorator';
 
-    @Component({})
-    export default class History extends Vue {
+@Component({})
+export default class History extends Vue {
 
-        public search = '';
-        public dates: { from: string, to: string } = {from: '', to: ''};
-        public headers = [
-            {text: 'Marka', value: 'name', align: 'left',},
-            {text: 'Model', value: 'model',},
-            {text: 'Nr rejestracyjny', value: 'nr', align: 'right'},
-        ];
-        public history = [];
+    public search = '';
+    public dates: { from: string, to: string } = {from: '', to: ''};
+    public headers = [
+        {text: 'Marka', value: 'name', align: 'left'},
+        {text: 'Model', value: 'model'},
+        {text: 'Nr rejestracyjny', value: 'nr', align: 'right'},
+    ];
+    public history = [];
 
-    }
-
+}
 </script>
 
 <style scoped lang="scss">

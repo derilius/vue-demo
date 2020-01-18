@@ -14,7 +14,7 @@ export default class NotificationService {
         const unwrappedError = error.message;
         const isArray = Array.isArray(unwrappedError);
         const msg = isArray && unwrappedError.length > 0 ? unwrappedError[0] : unwrappedError;
-        Vue.prototype.$awn.alert("Podano niepoprawne dane!", {labels: {alert: 'Błąd'}});
+        Vue.prototype.$awn.alert('Podano niepoprawne dane!', {labels: {alert: 'Błąd'}});
     }
 
     public static warn(message: string): void {

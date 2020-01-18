@@ -32,31 +32,30 @@
 </template>
 
 <script lang='ts'>
-    import {Component, Vue} from 'vue-property-decorator';
-    import LoginService from '@/panel/auth/LoginService';
-    import NotificationService from '@/modules/NotificationService';
-    import StorageService from "@/modules/StorageService";
+import {Component, Vue} from 'vue-property-decorator';
+import LoginService from '@/panel/auth/LoginService';
+import NotificationService from '@/modules/NotificationService';
+import StorageService from '@/modules/StorageService';
 
-    @Component
-    export default class Login extends Vue {
+@Component
+export default class Login extends Vue {
 
-        public formData: object = {
-            username: '',
-            password: '',
-        };
+    public formData: object = {
+        username: '',
+        password: '',
+    };
 
-        public async onLogin() {
-            try {
-                await LoginService.login(this.formData);
-                const user = await LoginService.getUserInfo();
-                StorageService.setUserData(user);
-                console.log(user);
-                await this.$store.dispatch('setUserData', user);
-                await this.$router.push('/panel/home');
-            } catch (e) {
-                NotificationService.error(e);
-            }
+    public async onLogin() {
+        try {
+            await LoginService.login(this.formData);
+            const user = await LoginService.getUserInfo();
+            StorageService.setUserData(user);
+            await this.$store.dispatch('setUserData', user);
+            await this.$router.push('/panel/home');
+        } catch (e) {
+            NotificationService.error(e);
         }
-
     }
+
+}
 </script>
