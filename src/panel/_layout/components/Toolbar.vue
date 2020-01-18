@@ -48,7 +48,7 @@
                         >
                             <v-list-item-title>{{ option }}</v-list-item-title>
                         </v-list-item>
-                        <v-list-item @click='onLogout'><i class="fas fa-sign-out-alt"></i> &nbsp; Let me out
+                        <v-list-item @click='onLogout'><i class="fas fa-sign-out-alt"></i> &nbsp; Wyloguj
                         </v-list-item>
                     </v-list>
                 </v-menu>
@@ -65,7 +65,7 @@
     export default class Toolbar extends Vue {
 
         public titles: string[] = ['Title 1', 'Title 2', 'Title 3'];
-        public options: string[] = ['Option 1', 'Option 2', 'Option 3'];
+        public options: string[] = ['Opcja 1', 'Opcja 2', 'Opcja 3'];
 
         @Emit('logout')
         public onLogout() {

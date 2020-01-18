@@ -18,6 +18,7 @@
             <v-text-field
                     label='Email'
                     placeholder='Email'
+                    :rules="[rules.email]"
                     v-model='formData.mail'>
             </v-text-field>
             <v-text-field
@@ -55,18 +56,27 @@
             mail: '',
             password: '',
         };
+        public rules = {
+            email: value => {
+                console.log(value)
+                console.log(value.toString().includes('@'))
+               return value.includes('@') || "Email nie poprawny"
+            }
+        }
 
         public async register() {
             try {
                 await LoginService.register(this.formData);
                 await this.$router.push('/auth/login');
-                NotificationService.success('Registered');
+                NotificationService.success('Zarejestrowano!');
             } catch (e) {
                 NotificationService.error(e);
             }
         }
 
-        public login() {
+        public
+
+        login() {
             this.$router.push('/auth/login');
         }
 
