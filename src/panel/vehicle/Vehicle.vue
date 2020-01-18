@@ -10,13 +10,20 @@
         </div>
 
         <div class="content-div col-lg-8">
-            <div class="w-100 d-flex flex-wrap">
-                <label class="w-100" style="text-align: right;font-size: 20px;padding: 5px 10px 5px 10px">
-                    Audi A3 RLA 3021
-                </label>
-                <v-divider class="w-100 mx-4"
-                           style="padding-bottom: 15px"
-                ></v-divider>
+            <div class="w-100 d-flex flex-wrap justify-space-between">
+                <div class="w-50">
+                    <label class="w-100" style="text-align: left;">
+                        <v-btn>
+                            <i class="fas fa-edit"></i>&nbsp;EDYTUJ
+                        </v-btn>
+                    </label>
+                </div>
+                <div class="w-50">
+                    <label class="w-100" style="text-align: right;font-size: 20px;padding: 5px 10px 5px 10px">
+                        Audi A3 RLA 3021
+                    </label>
+                </div>
+                <div style="width: 100%;min-height: 1px;max-height: 1px; background-color: lightgray; margin-bottom: 1rem;margin-top: 0.5rem"></div>
             </div>
             <div class="d-flex flex-wrap w-100">
                 <v-text-field class="form-input col-lg-4"
@@ -69,9 +76,10 @@
 <script lang='ts'>
     import {Component, Vue} from 'vue-property-decorator';
     import Table from "@/panel/vehicle/Table.vue";
+    import Layout from "@/panel/_layout/Layout.vue";
 
     @Component({
-        components: {Table}
+        components: {Layout, Table}
     })
     export default class Vehicle extends Vue {
 
