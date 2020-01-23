@@ -2,7 +2,7 @@ import axios from 'axios';
 import ApiService from '@/modules/ApiService';
 
 const instance = axios.create({
-    baseURL: 'http://localhost:9090',
+    baseURL: 'http://91.205.75.47:9090',
     timeout: 10000,
     headers: {
         'Accept': 'application/json',
