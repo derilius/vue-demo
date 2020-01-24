@@ -31,28 +31,9 @@
                                     <v-container>
                                         <v-row>
                                             <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.address"
-                                                              label="adres">
-                                                </v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.area"
-                                                              label="powierzchnia">
-                                                </v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.type"
-                                                              label="Typ">
-                                                </v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.condition"
-                                                              label="stan">
-                                                </v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.floor"
-                                                              label="piętro">
+                                                <v-text-field v-model="editedItem.date"
+                                                              type="date"
+                                                              label="data">
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6" md="4">
@@ -61,30 +42,19 @@
                                                               label="cena">
                                                 </v-text-field>
                                             </v-col>
-                                            <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.handingDate"
-                                                              type="date"
-                                                              label="data oddania">
-                                                </v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.roomsNumber"
-                                                              type="number"
-                                                              label="liczba pokoi">
-                                                </v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.roomsFloors"
-                                                              type="number"
-                                                              label="liczba pięter">
-                                                </v-text-field>
-                                            </v-col>
                                             <v-select cols="12" sm="6" md="4"
                                                       :items="peoples"
                                                       item-text="fullName"
                                                       item-value="id"
                                                       v-model="editedItem.personId"
-                                                      label="właściciel"
+                                                      label="agent"
+                                            ></v-select>
+                                            <v-select cols="12" sm="6" md="4"
+                                                      :items="properties"
+                                                      item-text="address"
+                                                      item-value="id"
+                                                      v-model="editedItem.propertyId"
+                                                      label="nieruchomość"
                                             ></v-select>
                                         </v-row>
                                     </v-container>
