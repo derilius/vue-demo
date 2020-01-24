@@ -10,7 +10,7 @@
             >
                 <template v-slot:top>
                     <v-toolbar flat color="white">
-                        <v-toolbar-title>Osoby</v-toolbar-title>
+                        <v-toolbar-title>Nieruchomości</v-toolbar-title>
                         <v-divider
                                 class="mx-4"
                                 inset
@@ -31,54 +31,60 @@
                                     <v-container>
                                         <v-row>
                                             <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.firstName"
-                                                              label="Imie">
-                                                </v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.lastName"
-                                                              label="Nazwisko">
-                                                </v-text-field>
-                                            </v-col>
-                                            <v-col cols="12" sm="6" md="4">
                                                 <v-text-field v-model="editedItem.address"
-                                                              label="Adres">
+                                                              label="adres">
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.telephone"
-                                                              label="Nr telefonu">
+                                                <v-text-field v-model="editedItem.area"
+                                                              label="powierzchnia">
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.pesel"
-                                                              label="pesel">
+                                                <v-text-field v-model="editedItem.type"
+                                                              label="Typ">
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.birthday"
-                                                              type="date"
-                                                              label="data urodzenia">
+                                                <v-text-field v-model="editedItem.condition"
+                                                              label="stan">
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.salary"
+                                                <v-text-field v-model="editedItem.floor"
+                                                              label="piętro">
+                                                </v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6" md="4">
+                                                <v-text-field v-model="editedItem.price"
                                                               type="number"
-                                                              label="wypłata">
+                                                              label="cena">
                                                 </v-text-field>
                                             </v-col>
                                             <v-col cols="12" sm="6" md="4">
-                                                <v-text-field v-model="editedItem.workedDate"
+                                                <v-text-field v-model="editedItem.handingDate"
                                                               type="date"
-                                                              label="data zatrudnienia">
+                                                              label="data oddania">
+                                                </v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6" md="4">
+                                                <v-text-field v-model="editedItem.roomsNumber"
+                                                              type="number"
+                                                              label="liczba pokoi">
+                                                </v-text-field>
+                                            </v-col>
+                                            <v-col cols="12" sm="6" md="4">
+                                                <v-text-field v-model="editedItem.roomsFloors"
+                                                              type="number"
+                                                              label="liczba pięter">
                                                 </v-text-field>
                                             </v-col>
                                             <v-select cols="12" sm="6" md="4"
-                                                      :items="roles"
-                                                      item-text="name"
+                                                      :items="peoples"
+                                                      item-text="fullName"
                                                       item-value="id"
-                                                      v-model="editedItem.roleId"
-                                                      label="rola"
+                                                      v-model="editedItem.personId"
+                                                      label="właściciel"
                                             ></v-select>
                                         </v-row>
                                     </v-container>
@@ -109,50 +115,36 @@
 
 <script lang='ts'>
     import {Component, Vue} from 'vue-property-decorator';
-    import PeopleService from '@/panel/history/PeopleService';
     import NotificationService from '@/modules/NotificationService';
-    import {Person} from '@/panel/history/types';
+    import {SimplePerson, SimpleProperty, TransactionType} from '@/panel/transaction/types';
+    import TransactionService from '@/panel/transaction/TransactionService';
 
     @Component({})
-    export default class People extends Vue {
+    export default class Transaction extends Vue {
 
         public dialog = false;
         public formTitle = '';
         public headers = [
-            {text: 'Imie', value: 'firstName'},
-            {text: 'Nazwisko', value: 'lastName'},
-            {text: 'Adress', value: 'address'},
-            {text: 'Nr telefonu', value: 'telephone'},
-            {text: 'Pesel', value: 'pesel'},
-            {text: 'Data urodzenia', value: 'birthday'},
-            {text: 'Rola', value: 'roleName'},
-            {text: 'Wypłata', value: 'salary'},
-            {text: 'Data zatrudnienia', value: 'workedDate'},
+            {text: 'Nieruchomość', value: 'propertyAddress'},
+            {text: 'Agent', value: 'personName'},
+            {text: 'Cena', value: 'price'},
+            {text: 'Data', value: 'date'},
             {text: 'Actions', value: 'action', sortable: false},
         ];
-        public data: [] = [];
-        public roles: [] = [];
-        public editedItem: Person = {
-            address: '',
-            birthday: '',
-            firstName: '',
-            id: 0,
-            lastName: '',
-            pesel: '',
-            roleId: 0,
-            roleName: '',
-            salary: 0,
-            telephone: '',
-            workedDate: '',
+        public data: TransactionType[] = [];
+        public peoples: SimplePerson[] = [];
+        public properties: SimpleProperty[] = [];
+        public editedItem: TransactionType = {
+            date: undefined, id: 0, personId: 0, personName: '', price: 0, propertyAddress: '', propertyId: 0,
         };
 
-        public editItem(item: Person) {
+        public editItem(item: TransactionType) {
             this.formTitle = 'edytuj';
             this.editedItem = Object.assign({}, item);
             this.dialog = true;
         }
 
-        public deleteItem(item: Person) {
+        public deleteItem(item: TransactionType) {
             const confirmed = confirm('Jesteś pewnien, że chcesz usunąć?');
             if (confirmed) {
                 this.delete(item.id);
@@ -161,7 +153,7 @@
 
         public close() {
             this.dialog = false;
-            this.editedItem = {} as Person;
+            this.editedItem = {} as TransactionType;
         }
 
         public save() {
@@ -175,20 +167,32 @@
 
         public mounted() {
             this.getAll();
-            this.getRoles();
+            this.getPeople();
+            this.getProperty();
         }
 
         public async getAll() {
             try {
-                this.data = await PeopleService.getAll();
+                this.data = await TransactionService.getAll();
             } catch (e) {
                 NotificationService.error(e);
             }
         }
 
-        public async getRoles() {
+        public async getPeople() {
             try {
-                this.roles = await PeopleService.getRoles();
+                this.peoples = await TransactionService.getPeople();
+            } catch (e) {
+                NotificationService.error(e);
+            }
+            this.peoples.map(p => {
+                p.fullName = p.firstName + ' ' + p.lastName;
+            });
+        }
+
+        public async getProperty() {
+            try {
+                this.properties = await TransactionService.getProperties();
             } catch (e) {
                 NotificationService.error(e);
             }
@@ -196,7 +200,7 @@
 
         public async create(formData: {}) {
             try {
-                await PeopleService.save(formData);
+                await TransactionService.save(formData);
                 this.getAll();
             } catch (e) {
                 NotificationService.error(e);
@@ -205,7 +209,7 @@
 
         public async edit(id: number, formData: {}) {
             try {
-                await PeopleService.update(id, formData);
+                await TransactionService.update(id, formData);
                 this.getAll();
             } catch (e) {
                 NotificationService.error(e);
@@ -214,7 +218,7 @@
 
         public async delete(id: number) {
             try {
-                await PeopleService.delete(id);
+                await TransactionService.delete(id);
                 this.getAll();
             } catch (e) {
                 NotificationService.error(e);

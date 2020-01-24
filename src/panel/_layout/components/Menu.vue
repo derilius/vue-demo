@@ -14,6 +14,18 @@
                 <i class="fas fa-users"></i>&nbsp;
                 <span> Osoby </span>
             </router-link>
+            <router-link :to="{name: 'property'}" class="w-100 menu-link-label menu-link">
+                <i class="fas fa-building"></i>&nbsp;
+                <span> Nieruchomości </span>
+            </router-link>
+            <router-link :to="{name: 'transaction'}" class="w-100 menu-link-label menu-link">
+                <i class="fas fa-handshake"></i>&nbsp;
+                <span> Transakcje </span>
+            </router-link>
+            <router-link :to="{name: 'role'}" class="w-100 menu-link-label menu-link">
+                <i class="fas fa-user-tag"></i></i>&nbsp;
+                <span> Role </span>
+            </router-link>
         </div>
 
     </div>
