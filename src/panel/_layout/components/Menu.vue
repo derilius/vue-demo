@@ -10,9 +10,9 @@
                 <i class="fas fa-home"></i>&nbsp;
                 <span> Strona główna</span>
             </router-link>
-            <router-link :to="{name: 'history'}" class="w-100 menu-link-label menu-link">
-                <i class="fas fa-calendar-alt"></i>&nbsp;
-                <span> Historia </span>
+            <router-link :to="{name: 'osoby'}" class="w-100 menu-link-label menu-link">
+                <i class="fas fa-users"></i>&nbsp;
+                <span> Osoby </span>
             </router-link>
         </div>
 

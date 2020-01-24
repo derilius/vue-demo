@@ -27,8 +27,18 @@ export default class ApiService {
         return response.data;
     }
 
+    public static async put(url: string, param?: object) {
+        const response = await this.HTTP.put(url, param);
+        return response.data;
+    }
+
     public static async get(url: string) {
         const response = await this.HTTP.get(url);
+        return response.data;
+    }
+
+    public static async remove(url: string) {
+        const response = await this.HTTP.delete(url);
         return response.data;
     }
 

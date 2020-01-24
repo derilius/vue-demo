@@ -1,6 +1,7 @@
 import Layout from '@/panel/_layout/Layout.vue';
 import Home from '@/panel/home/Home.vue';
-import History from '@/panel/history/History.vue';
+import History from '@/panel/history/People.vue';
+import People from "@/panel/history/People.vue";
 
 export default [
     {
@@ -24,11 +25,11 @@ export default [
                 },
             },
             {
-                path: 'history',
-                name: 'history',
-                component: History,
+                path: 'osoby',
+                name: 'osoby',
+                component: People,
                 meta: {
-                    title: 'history',
+                    title: 'osoby',
                     public: false,
                     onlyWhenLoggedOut: false,
                 },
